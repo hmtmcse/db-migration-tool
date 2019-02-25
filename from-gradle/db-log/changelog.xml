@@ -1,0 +1,531 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="hmtmc (generated)" id="1551114329257-1">
+        <createTable tableName="assignee">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="assign_to_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="todo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-2">
+        <createTable tableName="bug_report">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bug_type" type="VARCHAR(255)"/>
+            <column name="other_info" type="LONGTEXT"/>
+            <column name="parent_issue_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporter_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="json_data" type="LONGTEXT"/>
+            <column name="related_issue_id" type="BIGINT"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="step_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-3">
+        <createTable tableName="bug_report_user">
+            <column name="bug_report_assignee_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-4">
+        <createTable tableName="bug_work_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="bug_report_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_owner_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="started_moment" type="datetime"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="end_moment" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-5">
+        <createTable tableName="change_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="json_data" type="LONGTEXT"/>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="todo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_info" type="LONGTEXT"/>
+            <column name="description" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-6">
+        <createTable tableName="complexity">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="estimated_hour" type="DOUBLE"/>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="todo_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_info" type="LONGTEXT"/>
+            <column name="json_data" type="LONGTEXT"/>
+            <column name="task_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sort_order" type="INT"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_lock" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="started_moment" type="datetime"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="reference" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-7">
+        <createTable tableName="data_change_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="rowid" type="BIGINT"/>
+            <column name="rowuuid" type="VARCHAR(255)"/>
+            <column name="changed_data_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="domain_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changed_by_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-8">
+        <createTable tableName="notes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="json_data" type="LONGTEXT"/>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT"/>
+            <column name="todo_id" type="BIGINT"/>
+            <column name="description" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-9">
+        <createTable tableName="steps">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="estimated_hour" type="DOUBLE"/>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="todo_id" type="BIGINT"/>
+            <column name="other_info" type="LONGTEXT"/>
+            <column name="json_data" type="LONGTEXT"/>
+            <column name="sort_order" type="INT"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_lock" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="complexity_id" type="BIGINT"/>
+            <column name="started_moment" type="datetime"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="reference" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-10">
+        <createTable tableName="todo">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="estimated_hour" type="DOUBLE"/>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="private_for_id" type="INT"/>
+            <column name="external_info" type="LONGTEXT"/>
+            <column name="due_date" type="datetime"/>
+            <column name="parent_issue_id" type="BIGINT"/>
+            <column name="json_data" type="LONGTEXT"/>
+            <column name="todo_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="priority" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_lock" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="started_moment" type="datetime"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="execute_date" type="datetime"/>
+            <column name="external_id" type="VARCHAR(255)"/>
+            <column name="reference" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-11">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="VARCHAR(255)"/>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="user_role" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_external_user" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-12">
+        <createTable tableName="work_log">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_owner_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="started_moment" type="datetime"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="end_moment" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-13">
+        <createIndex indexName="FK1ago4b0mgtxnt0a04qaeco7yb" tableName="bug_report_user">
+            <column name="bug_report_assignee_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-14">
+        <createIndex indexName="FK1jaudkrlytn99js2leicjd7xj" tableName="bug_report">
+            <column name="parent_issue_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-15">
+        <createIndex indexName="FK57a50ldgo07hgq2fa3tjh2lqy" tableName="bug_work_log">
+            <column name="bug_report_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-16">
+        <createIndex indexName="FK58yqhir7gnuk875936ltx3eua" tableName="change_log">
+            <column name="todo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-17">
+        <createIndex indexName="FK5nilntnpbstgkspb646pvio9c" tableName="complexity">
+            <column name="todo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-18">
+        <createIndex indexName="FK81y6xsq90m50jmops9o6t5ngk" tableName="bug_report_user">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-19">
+        <createIndex indexName="FK886k20yvp6ikroxcojn1ikd6p" tableName="todo">
+            <column name="created_by_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-20">
+        <createIndex indexName="FK8k5kxo1je4v67j5g20pll6stg" tableName="bug_work_log">
+            <column name="task_owner_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-21">
+        <createIndex indexName="FKcapa0lprq1rkgru2fydcw9bxs" tableName="assignee">
+            <column name="created_by_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-22">
+        <createIndex indexName="FKei4htn8mr4qmbsq8d837ql90b" tableName="steps">
+            <column name="todo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-23">
+        <createIndex indexName="FKfesq4vni0yujefn5s404ae0o9" tableName="assignee">
+            <column name="todo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-24">
+        <createIndex indexName="FKfv4yskjtpqax7c8klfw25lly6" tableName="steps">
+            <column name="complexity_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-25">
+        <createIndex indexName="FKjmtcdwq3hk3c1g7eqgcfekpao" tableName="notes">
+            <column name="todo_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-26">
+        <createIndex indexName="FKjqwxc4dfyondk0dt2rb5tuag5" tableName="bug_report">
+            <column name="related_issue_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-27">
+        <createIndex indexName="FKn1k134st415fs1h1kicujql9r" tableName="assignee">
+            <column name="assign_to_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-28">
+        <createIndex indexName="FKnww9ckb6iguhwrq9ybj4y7v40" tableName="todo">
+            <column name="private_for_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-29">
+        <createIndex indexName="FKpbat1htii9ulwltx0ujg9b5k2" tableName="todo">
+            <column name="parent_issue_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-30">
+        <createIndex indexName="FKs5tgl2dojg5t8bsk55yssmuqv" tableName="bug_report">
+            <column name="step_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-31">
+        <createIndex indexName="FKsncua5ftnqcfg0q2pg8ylcs3x" tableName="notes">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-32">
+        <createIndex indexName="FKssrbhmsrusa9owb39jx6c3lfy" tableName="work_log">
+            <column name="task_owner_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-33">
+        <createIndex indexName="FKt5p7ltmjo7g0m5m32c8o1axip" tableName="bug_report">
+            <column name="reporter_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-34">
+        <addForeignKeyConstraint baseColumnNames="bug_report_assignee_id" baseTableName="bug_report_user" constraintName="FK1ago4b0mgtxnt0a04qaeco7yb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="bug_report" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-35">
+        <addForeignKeyConstraint baseColumnNames="parent_issue_id" baseTableName="bug_report" constraintName="FK1jaudkrlytn99js2leicjd7xj" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-36">
+        <addForeignKeyConstraint baseColumnNames="bug_report_id" baseTableName="bug_work_log" constraintName="FK57a50ldgo07hgq2fa3tjh2lqy" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="bug_report" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-37">
+        <addForeignKeyConstraint baseColumnNames="todo_id" baseTableName="change_log" constraintName="FK58yqhir7gnuk875936ltx3eua" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-38">
+        <addForeignKeyConstraint baseColumnNames="todo_id" baseTableName="complexity" constraintName="FK5nilntnpbstgkspb646pvio9c" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-39">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="bug_report_user" constraintName="FK81y6xsq90m50jmops9o6t5ngk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-40">
+        <addForeignKeyConstraint baseColumnNames="created_by_id" baseTableName="todo" constraintName="FK886k20yvp6ikroxcojn1ikd6p" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-41">
+        <addForeignKeyConstraint baseColumnNames="task_owner_id" baseTableName="bug_work_log" constraintName="FK8k5kxo1je4v67j5g20pll6stg" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-42">
+        <addForeignKeyConstraint baseColumnNames="created_by_id" baseTableName="assignee" constraintName="FKcapa0lprq1rkgru2fydcw9bxs" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-43">
+        <addForeignKeyConstraint baseColumnNames="todo_id" baseTableName="steps" constraintName="FKei4htn8mr4qmbsq8d837ql90b" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-44">
+        <addForeignKeyConstraint baseColumnNames="todo_id" baseTableName="assignee" constraintName="FKfesq4vni0yujefn5s404ae0o9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-45">
+        <addForeignKeyConstraint baseColumnNames="complexity_id" baseTableName="steps" constraintName="FKfv4yskjtpqax7c8klfw25lly6" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="complexity" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-46">
+        <addForeignKeyConstraint baseColumnNames="todo_id" baseTableName="notes" constraintName="FKjmtcdwq3hk3c1g7eqgcfekpao" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-47">
+        <addForeignKeyConstraint baseColumnNames="related_issue_id" baseTableName="bug_report" constraintName="FKjqwxc4dfyondk0dt2rb5tuag5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-48">
+        <addForeignKeyConstraint baseColumnNames="assign_to_id" baseTableName="assignee" constraintName="FKn1k134st415fs1h1kicujql9r" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-49">
+        <addForeignKeyConstraint baseColumnNames="private_for_id" baseTableName="todo" constraintName="FKnww9ckb6iguhwrq9ybj4y7v40" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-50">
+        <addForeignKeyConstraint baseColumnNames="parent_issue_id" baseTableName="todo" constraintName="FKpbat1htii9ulwltx0ujg9b5k2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="todo" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-51">
+        <addForeignKeyConstraint baseColumnNames="step_id" baseTableName="bug_report" constraintName="FKs5tgl2dojg5t8bsk55yssmuqv" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="steps" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-52">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="notes" constraintName="FKsncua5ftnqcfg0q2pg8ylcs3x" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-53">
+        <addForeignKeyConstraint baseColumnNames="task_owner_id" baseTableName="work_log" constraintName="FKssrbhmsrusa9owb39jx6c3lfy" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="hmtmc (generated)" id="1551114329257-54">
+        <addForeignKeyConstraint baseColumnNames="reporter_id" baseTableName="bug_report" constraintName="FKt5p7ltmjo7g0m5m32c8o1axip" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
