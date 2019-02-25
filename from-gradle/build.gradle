@@ -39,9 +39,12 @@ task doSomething {
         activities {
             main {
                 changeLogFile changeLog
-                url 'jdbc:mysql://localhost/task_manager?useUnicode=yes&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'
+                url 'jdbc:mysql://localhost/task_manager1?useUnicode=yes&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'
                 username 'root'
                 password ''
+                referenceUrl 'jdbc:mysql://localhost/task_manager?useUnicode=yes&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'
+                referenceUsername 'root'
+                referencePassword ''
             }
         }
     }
