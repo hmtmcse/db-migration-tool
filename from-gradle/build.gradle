@@ -31,7 +31,7 @@ dependencies {
     liquibaseRuntime group: 'org.liquibase', name: 'liquibase-core', version: '3.6.3'
 }
 
-def changeLog = "$projectDir/db-log/changelog.xml"
+def changeLog = "$projectDir/db-log/changelog.mysql.sql"
 
 task doSomething {
     println "executing qa"
