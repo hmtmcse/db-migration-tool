@@ -1,12 +1,21 @@
 package com.hmtmcse.dbmigrationtool.base;
 
-import java.sql.Connection;
+import liquibase.integration.commandline.Main;
+
 
 public class LiquiBaseManager {
 
-    private Connection connection;
-    public LiquiBaseManager(Connection connection){
-        this.connection = connection;
+
+
+    public void start(){
+        String[] myList = {
+                "--changeLogFile=current-changelog.xml",
+                "--url=jdbc:mysql://localhost/task_manager",
+                "--username=root",
+                "--password=",
+                "generateChangeLog"};
+
+        Main.main(myList);
     }
 
 }
